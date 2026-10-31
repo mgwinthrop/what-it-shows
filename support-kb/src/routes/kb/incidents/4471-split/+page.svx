@@ -1,6 +1,6 @@
 ---
 layout: runbook
-title: '#4471 · what the merge held: three problems, not one'
+title: '#4471 · what the merge held: two problems, not one'
 owner: support desk
 status: living
 reviewed: 2026-10-31
@@ -13,26 +13,29 @@ signature: v1.eyJzdWIiOiIyMzQ4IiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpYX
 </script>
 
 [#4471](/kb/incidents/4471) says one issue and one fix. The 412 reports merged into it are not
-one issue. Read against the tenant directory (locale and booking form), they split into three
-problems. Only the first is the parser bug the ticket describes.
+one issue. Read against the tenant directory (locale and booking form), they split into two
+causes. Only the first is the parser bug the ticket describes.
 
 <Callout>
-The parser fix will not stop reports 2 and 3. Two problems have no ticket of their own until the
-tickets below are filed.
+The parser fix will not stop the second problem. It has no ticket of its own until the tickets
+below are filed.
 </Callout>
 
-## The three problems
+## The two problems
 
 | # | problem | reports | tenants | seen |
 |---|---------|---------|---------|------|
 | 1 | The shared parser reads every date month first, so day-first tenants get flipped dates | 379 | 11 | 2026-04-01 → 2026-10-04 |
 | 2 | Booking form v3 prints `MM/DD/YYYY` under the date field, so people in day-first tenants type month first | 33 | 3 | 2026-04-17 → 2026-09-22 |
-| 3 | An invite lands one day off, with no month flip: a time zone or day boundary problem | 5 (also in 1) | 5 | 2026-04-02 → 2026-10-04 |
 
-The desk's cause table counts every report where it is filed: 379 + 33 = 412. The 5 one-day
-reports are filed under the parser, so problem 1 counts them and problem 3 footnotes them
-(374 + 33 + 5 = 412 if you count them once, apart). The export holds 427 rows because its pages
-overlap; 15 reports appear twice and are counted once.
+379 + 33 = 412. Every report is counted once, where the desk files it. The export holds 427
+rows because its pages overlap; 15 reports appear twice and are counted once.
+
+**Footnote to problem 1.** 5 of its 379 reports read as a one-day move, not a month flip
+(R-41202, R-41209, R-41236, R-41344, R-41620; the desk lists them in its own notes). They are
+filed under the parser and counted there. Their bodies talk about time zones and day
+boundaries (the same meeting giving two cities two different days), so ask engineering to check
+whether the parser fix covers them once it ships.
 
 ## How to tell them apart
 
@@ -42,24 +45,19 @@ overlap; 15 reports appear twice and are counted once.
   parser flips every other day-first report.
 - **Intake's tag is a guess.** It is made from the reporter's browser. 23 reports it tagged as
   `hint` are the parser bug, and 15 it tagged as `parser` are the form hint.
-- **Read the body for the one-day group.** Problem 3 is the desk's own "read as a one-day move"
-  list. A month flip changes the month. These change the day only: the same meeting gives two
-  clients in two cities two different days; an invite arrives before the booking was made; a
-  Tuesday shows as Monday. These five are different from each other, so treat the shared cause
-  as a hypothesis until engineering reproduces it.
 
 ## Why the merge hid this
 
 [Decision 0001](/kb/decisions/0001-dedupe-by-subject) merges reports on subject line alone. The
-subjects here are things like "Wrong day on the invite", which fit all three problems. Merging
-on subject is fast, but it counts three bugs once and hides two of them. The reports were
+subjects here are things like "Wrong day on the invite", which fit both problems. Merging
+on subject is fast, but it counts two bugs once and hides one of them. The reports were
 merged into #4471 months before anyone read the bodies; the oldest merge in the export is dated
 2026-07-02.
 
 ## What to do
 
 1. File one ticket per problem (the tickets for this page are in the repository's issues).
-2. Move reports 2 and 3 out of #4471, so the parser fix closes only what it fixes.
+2. Move the problem 2 reports out of #4471, so the parser fix closes only what it fixes.
 3. Reopen the question in decision 0001: when two reports share a subject, check the tenant's
    locale and booking form before merging. A new record replaces 0001; 0001 is not edited.
 

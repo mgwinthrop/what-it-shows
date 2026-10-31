@@ -1,7 +1,7 @@
 # what-it-shows
 
 Work for MEGA.dev S01E03. Support ticket #4471 merged 412 reports about wrong dates and marked
-them known. They hold three problems; each has an issue in this repo.
+them known. They hold two problems; each has an issue in this repo (379 and 33 reports).
 
 - `support-kb/`: the support desk's kb export, plus one new page,
   `src/routes/kb/incidents/4471-split/+page.svx`. The page is signed in its frontmatter.
