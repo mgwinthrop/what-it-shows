@@ -8,4 +8,10 @@ them known. They hold two problems; each has an issue in this repo (379 and 33 r
 - `analysis/count.mjs`: counts the reports by problem. Run `node analysis/count.mjs` from the
   repo root. `analysis/groups.json` is its output (report ids per problem).
 
-The page was not rendered: the export has no build files, so it is source only.
+- `rendered/4471-split.html`: the page as the desk sees it, prerendered from the `.svx` with
+  the kb's own layout and components. The desk ref in its footer, `DR-G6BY-ZY24`, is derived
+  from the page's `signature`.
+- `render-config/`: the minimal build setup used to render it (the export ships no build files).
+  Copy `src/` from `support-kb/`, add `vite.config.js` and `package.json`, then `npm install`
+  svelte, @sveltejs/kit, @sveltejs/adapter-static, @sveltejs/vite-plugin-svelte, vite, mdsvex
+  and run `vite build`.

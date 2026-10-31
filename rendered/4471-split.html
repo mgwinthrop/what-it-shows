@@ -1,0 +1,58 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8" /><link href="../../_app/immutable/entry/start.D1HzdfF7.js" rel="modulepreload">
+		<link href="../../_app/immutable/entry/payload.DSmR2FwN.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/CRzLMJPS.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/CptVIHXj.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/CHfFqfNT.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/DQG8lHS1.js" rel="modulepreload">
+		<link href="../../_app/immutable/entry/app.DSZW_ZzK.js" rel="modulepreload">
+		<link href="../../_app/immutable/nodes/0.Izv2btRW.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/DK3Fl9T5.js" rel="modulepreload">
+		<link href="../../_app/immutable/nodes/5.CC8Bo0fy.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/miCD_a-J.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/DkoUumqI.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/D_S-iv6j.js" rel="modulepreload">
+		<!--e2jw2j--><!----><title>#4471 · what the merge held: two problems, not one · support kb</title>
+		<link href="../../_app/immutable/assets/runbook.COyw0cbZ.css" rel="stylesheet">
+		<link href="../../_app/immutable/assets/Callout.AbLv9dM_.css" rel="stylesheet">
+		<link href="../../_app/immutable/assets/_page.WePi3wDe.css" rel="stylesheet"></head><body><!--[--><!--[--><!--[0--><!--[--><!--[--><!--[-1--><!--[--><div class="kb svelte-e2jw2j"><header><a class="crumb svelte-e2jw2j" href="/kb">support desk · kb</a> <h1 class="svelte-e2jw2j">#4471 · what the merge held: two problems, not one</h1> <p class="meta svelte-e2jw2j"><span>owner <b>support desk</b></span> <span class="status living svelte-e2jw2j">living</span> <span class="svelte-e2jw2j">reviewed 2026-10-31 · 0 days ago</span></p></header> <!--[-1--><!--]--> <main><p><a href="/kb/incidents/4471">#4471</a> says one issue and one fix. The 412 reports merged into it are not
+one issue. Read against the tenant directory (locale and booking form), they split into two
+causes. Only the first is the parser bug the ticket describes.</p> <aside class="note svelte-17bri61"><!---->The parser fix will not stop the second problem. It has no ticket of its own until the tickets
+below are filed.<!----></aside><!----> <h2>The two problems</h2> <table><thead><tr><th>#</th><th>problem</th><th>reports</th><th>tenants</th><th>seen</th></tr></thead><tbody><tr><td>1</td><td>The shared parser reads every date month first, so day-first tenants get flipped dates</td><td>379</td><td>11</td><td>2026-04-01 → 2026-10-04</td></tr><tr><td>2</td><td>Booking form v3 prints <code>MM/DD/YYYY</code> under the date field, so people in day-first tenants type month first</td><td>33</td><td>3</td><td>2026-04-17 → 2026-09-22</td></tr></tbody></table> <p>379 + 33 = 412. Every report is counted once, where the desk files it. The export holds 427
+rows because its pages overlap; 15 reports appear twice and are counted once.</p> <p><strong>Footnote to problem 1.</strong> 5 of its 379 reports read as a one-day move, not a month flip
+(R-41202, R-41209, R-41236, R-41344, R-41620; the desk lists them in its own notes). They are
+filed under the parser and counted there. Their bodies talk about time zones and day
+boundaries (the same meeting giving two cities two different days), so ask engineering to check
+whether the parser fix covers them once it ships.</p> <h2>How to tell them apart</h2> <ul><li><strong>Look up the tenant, not the report.</strong> Every tenant in the directory writes day first. Whether
+the cause is the parser or the form hint depends on which booking form the tenant runs and how
+the report arrived. Only a report that came through a <code>booking-v3</code> form is problem 2. The
+parser flips every other day-first report.</li> <li><strong>Intake’s tag is a guess.</strong> It is made from the reporter’s browser. 23 reports it tagged as <code>hint</code> are the parser bug, and 15 it tagged as <code>parser</code> are the form hint.</li></ul> <h2>Why the merge hid this</h2> <p><a href="/kb/decisions/0001-dedupe-by-subject">Decision 0001</a> merges reports on subject line alone. The
+subjects here are things like “Wrong day on the invite”, which fit both problems. Merging
+on subject is fast, but it counts two bugs once and hides one of them. The reports were
+merged into #4471 months before anyone read the bodies; the oldest merge in the export is dated
+2026-07-02.</p> <h2>What to do</h2> <ol><li>File one ticket per problem (the tickets for this page are in the repository’s issues).</li> <li>Move the problem 2 reports out of #4471, so the parser fix closes only what it fixes.</li> <li>Reopen the question in decision 0001: when two reports share a subject, check the tenant’s
+locale and booking form before merging. A new record replaces 0001; 0001 is not edited.</li></ol> <h2>Lessons</h2> <ul><li>A big ticket is mostly one bug reported many times, until it isn’t. Count the causes before
+you merge, not after.</li> <li>A number that can be computed should be computed. These counts come from <code>analysis/count.mjs</code>, which reads the export and prints them; re-run it when the export
+changes.</li></ul> <!--[0--><p class="stamp svelte-1280m42">desk ref <b class="svelte-1280m42">DR-G6BY-ZY24</b></p><!--]--><!----><!----></main> <footer class="svelte-e2jw2j">Pages are written by people. Tables and charts are built from data at render time.</footer></div><!--]--><!--]--><!--]--><!----><!--]--><!--]--><!--]--><!----> <!--[-1--><!--]--><!--]-->
+			
+			<script>
+				{
+					__sveltekit_1gjygn0 = {
+						base: new URL("../..", location).pathname.slice(0, -1),
+						version: "1793442404236"
+					};
+
+					const element = document.currentScript.parentElement;
+
+					import("../../_app/immutable/entry/start.D1HzdfF7.js").then(async (kit) => {
+						kit.init(__sveltekit_1gjygn0);
+						const app = await import("../../_app/immutable/entry/app.DSZW_ZzK.js");
+						kit.start(app, element, {
+							node_ids: [0, 5],
+							data: [null,null],
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</body></html>
