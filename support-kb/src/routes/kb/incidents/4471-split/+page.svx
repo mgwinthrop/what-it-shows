@@ -4,7 +4,7 @@ title: '#4471 · what the merge held: three problems, not one'
 owner: support desk
 status: living
 reviewed: 2026-10-31
-signature: v1.eyJzdWIiOiIyMzQ4IiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpYXQiOjE3OTM0NDA2NTgsImV4cCI6MTc5MzUyNzA1OH0.EO1zQrw-gp41L_fhrZoQB4RARe6n9wUqoRwXSsrkGeU
+signature: v1.eyJzdWIiOiIyMzQ4IiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpYXQiOjE3OTM0NDMzODMsImV4cCI6MTc5MzUyOTc4M30.zOrqs2QYSAVtYYZiroecD45FMjLNnjRBG5uhperGa5g
 ---
 
 <script>

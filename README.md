@@ -9,7 +9,7 @@ them known. They hold three problems; each has an issue in this repo (374, 33 an
   repo root. `analysis/groups.json` is its output (report ids per problem).
 
 - `rendered/4471-split.html`: the page as the desk sees it, prerendered from the `.svx` with
-  the kb's own layout and components. The desk ref in its footer, `DR-G6BY-ZY24`, is derived
+  the kb's own layout and components. The desk ref in its footer, `DR-CNRV-SWGY`, is derived
   from the page's `signature`.
 - `render-config/`: the minimal build setup used to render it (the export ships no build files).
   Copy `src/` from `support-kb/`, add `vite.config.js` and `package.json`, then `npm install`
