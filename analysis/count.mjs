@@ -23,6 +23,7 @@ for (const r of unique) {
   else if (r.channel === 'form' && HINT[t.form].startsWith('MM')) groups.hint.push(r);
   else groups.parser.push(r);
 }
+console.log(`desk view (one-day filed under parser): parser ${groups.parser.length + groups['one-day'].length}, hint ${groups.hint.length}`);
 console.log(`exported ${reports.length}, unique ${unique.length}, repeats ${reports.length - unique.length}`);
 const out = {};
 for (const [k, rs] of Object.entries(groups)) {

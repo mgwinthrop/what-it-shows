@@ -25,12 +25,14 @@ tickets below are filed.
 
 | # | problem | reports | tenants | seen |
 |---|---------|---------|---------|------|
-| 1 | The shared parser reads every date month first, so day-first tenants get flipped dates | 374 | 11 | 2026-04-01 → 2026-10-04 |
+| 1 | The shared parser reads every date month first, so day-first tenants get flipped dates | 379 | 11 | 2026-04-01 → 2026-10-04 |
 | 2 | Booking form v3 prints `MM/DD/YYYY` under the date field, so people in day-first tenants type month first | 33 | 3 | 2026-04-17 → 2026-09-22 |
-| 3 | An invite lands one day off, with no month flip: a time zone or day boundary problem | 5 | 5 | 2026-04-02 → 2026-10-04 |
+| 3 | An invite lands one day off, with no month flip: a time zone or day boundary problem | 5 (also in 1) | 5 | 2026-04-02 → 2026-10-04 |
 
-374 + 33 + 5 = 412. The export holds 427 rows because its pages overlap; 15 reports appear
-twice and are counted once.
+The desk's cause table counts every report where it is filed: 379 + 33 = 412. The 5 one-day
+reports are filed under the parser, so problem 1 counts them and problem 3 footnotes them
+(374 + 33 + 5 = 412 if you count them once, apart). The export holds 427 rows because its pages
+overlap; 15 reports appear twice and are counted once.
 
 ## How to tell them apart
 
