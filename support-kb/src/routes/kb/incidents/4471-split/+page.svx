@@ -40,7 +40,7 @@ twice and are counted once.
   parser flips every other day-first report.
 - **Intake's tag is a guess.** It is made from the reporter's browser. 23 reports it tagged as
   `hint` are the parser bug, and 15 it tagged as `parser` are the form hint.
-- **Read the body for the one-day group.** Reports 3 are the desk's own "read as a one-day move"
+- **Read the body for the one-day group.** Problem 3 is the desk's own "read as a one-day move"
   list. A month flip changes the month. These change the day only: the same meeting gives two
   clients in two cities two different days; an invite arrives before the booking was made; a
   Tuesday shows as Monday. These five are different from each other, so treat the shared cause
